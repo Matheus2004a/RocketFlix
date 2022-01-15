@@ -16,14 +16,11 @@
 
 body{
     background: var(--background);
+    height: 100vh;
 }
 
 header{
     display: grid;
-    justify-content: center;
-}
-
-.brand{
     justify-content: center;
 }
 
@@ -50,9 +47,14 @@ button{
     height: 1.65rem;
 }
 
+.search-movie figure figcaption{
+    font-weight: bold;
+}
+
 figure{ 
     display: flex;
-    align-items: center;    
+    justify-content: center;  
+    align-items: center;  
 }
 
 figure img{
@@ -66,4 +68,17 @@ h1{
 
 h1,h2,h3,p{
     color: var(--title);
+}
+
+.img-error{
+    width: 10.60rem;
+    height: 15.30rem;
+}
+
+#titleMovie{
+    margin: 1.24rem 0 1.20rem;
+}
+
+#imgMovie{
+    margin: 1.875rem 0 1.25rem;
 }
