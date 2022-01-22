@@ -13,12 +13,10 @@ async function searchMovie() {
         descriptionMovies.textContent = dataRequest.overview
       })
   }).catch(error => {
-    let containerImg = document.createElement("figure")
     let imgError = document.createElement("img")
     imgError.classList.add("img-error")
     imgError.src = "./assets/poster.svg"
-    containerImg.appendChild(imgError)
-    document.querySelectorAll(".containerMovies figure")[0].appendChild(containerImg)
+    document.querySelectorAll(".containerMovies figure")[0].appendChild(imgError)
     titleMovie.textContent = `Ops, hoje não é dia de assistir filme.
     Bora codar! 🚀`
     console.log(error)
