@@ -1,24 +1,39 @@
-import { API_KEY, BASE_URL, IMG_URL, language } from './api.js'
+import { API_KEY, IMG_URL, language } from './api.js'
 
 const buttonSearchMovie = document.querySelector(".search-movie")
 buttonSearchMovie.addEventListener("click", searchMovie)
 
+function contentMovie(data) {
+  console.log(data)
+
+  const main = document.querySelector("main")
+  const section = document.querySelector(".section-movie")
+
+  section.innerHTML = `<figure>
+      <img src=${IMG_URL}/${data.poster_path}>
+        <figcaption>
+          <h3 id="titleMovie">${data.title}</h3>
+          <p id="descriptionMovies">${data.overview}</p>
+        </figcaption>
+      </figure>`
+  main.prepend(section)
+}
+
 async function searchMovie() {
-  const url = BASE_URL
+  const randomId = Math.floor(Math.random() * 4000)
+  const url = `https://api.themoviedb.org/3/movie/${randomId}?${API_KEY}&${language}`;
+
   await fetch(url).then(requestUrl => {
     requestUrl.json()
       .then(dataRequest => {
-        console.log(dataRequest)
-        titleMovie.textContent = dataRequest.original_title
-        descriptionMovies.textContent = dataRequest.overview
+        contentMovie(dataRequest)
       })
   }).catch(error => {
-    let imgError = document.createElement("img")
-    imgError.classList.add("img-error")
-    imgError.src = "./assets/poster.svg"
-    document.querySelectorAll(".containerMovies figure")[0].appendChild(imgError)
-    titleMovie.textContent = `Ops, hoje não é dia de assistir filme.
-    Bora codar! 🚀`
     console.log(error)
   })
-} 
+}
+
+/* img.classList.add("img-error")
+img.src = "./assets/poster.svg"
+titleMovie.textContent = `Ops, hoje não é dia de assistir filme.
+Bora codar! 🚀` */
