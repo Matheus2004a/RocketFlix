@@ -19,6 +19,10 @@ body {
     height: 100vh;
 }
 
+body.has-content{
+    height: 100%;
+}
+
 header {
     margin-top: 2rem;
     place-items: center;
@@ -59,8 +63,12 @@ main {
 
 .section-movie figure img {
     border-radius: 5px;
-    width: 20rem;
-    height: 20rem;
+    width: calc(100% - 65%);
+    height: 100%;
+}
+
+.section-movie figure img.movie-not-found {
+    filter: opacity(1) contrast(.5);
 }
 
 .section-movie figure figcaption {
@@ -90,7 +98,6 @@ button {
     font-weight: bold;
 }
 
-
 .section-search figure {
     display: flex;
     justify-content: center;
@@ -117,4 +124,22 @@ p {
 .instruction {
     width: 30vw;
     text-align: center;
+}
+
+@media (max-width: 800px) {
+    header {
+        text-align: center;
+    }
+
+    .section-movie figure {
+        display: grid;
+    }
+
+    .section-movie figure img {
+        width: 100%;
+    }
+
+    .instruction {
+        width: 50vw;
+    }
 }
