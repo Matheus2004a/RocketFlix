@@ -6,14 +6,33 @@ buttonSearchMovie.addEventListener("click", searchMovie)
 function contentMovie(data) {
   console.log(data)
 
+  const date = new Date(data.release_date)
   const main = document.querySelector("main")
   const section = document.querySelector(".section-movie")
+
+  const detailsIsUndefined = data.title === undefined && data.overview === undefined && !data.success
+
+  if (detailsIsUndefined) {
+    section.innerHTML = `<figure>
+      <img src=./assets/poster.svg>
+        <figcaption>
+          <p id="descriptionMovies">Filme não disponível.
+          Bora codar! 🚀</p>
+        </figcaption>
+      </figure>`
+    main.prepend(section)
+    throw new Error("Filme não disponível")
+  }
+
+  const dateFormatted = (`${date.getDate() + 1}/${((date.getMonth() + 1))}/${date.getFullYear()}`); 
 
   section.innerHTML = `<figure>
       <img src=${IMG_URL}/${data.poster_path}>
         <figcaption>
           <h3 id="titleMovie">${data.title}</h3>
+          <p>Data de lançamento: ${dateFormatted}</p>
           <p id="descriptionMovies">${data.overview}</p>
+          <p><strong>Gêneros:</strong> ${data.genres.map(item => item.name)}</p>
         </figcaption>
       </figure>`
   main.prepend(section)
@@ -26,14 +45,13 @@ async function searchMovie() {
   await fetch(url).then(requestUrl => {
     requestUrl.json()
       .then(dataRequest => {
-        contentMovie(dataRequest)
+        try {
+          contentMovie(dataRequest)
+        } catch (error) {
+          console.log(error.message)
+        }
       })
   }).catch(error => {
     console.log(error)
   })
 }
-
-/* img.classList.add("img-error")
-img.src = "./assets/poster.svg"
-titleMovie.textContent = `Ops, hoje não é dia de assistir filme.
-Bora codar! 🚀` */
