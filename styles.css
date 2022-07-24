@@ -84,10 +84,16 @@ button {
 .search-movie {
     padding: 1rem;
     border-radius: 5px;
+    transition: opacity .5s;
 }
 
 .search-movie:hover {
     cursor: pointer;
+    opacity: .8;
+}
+
+.search-movie:active {
+    opacity: .4;
 }
 
 .search-movie figure img {

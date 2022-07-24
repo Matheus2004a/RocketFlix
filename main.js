@@ -5,14 +5,12 @@ const buttonSearchMovie = document.querySelector(".search-movie")
 buttonSearchMovie.addEventListener("click", searchMovie)
 
 function contentMovie(data) {
-  console.log(data)
-
   const date = new Date(data.release_date)
   const main = document.querySelector("main")
   const section = document.querySelector(".section-movie")
 
   function changeHeightScreen() {
-    main.contains(section.firstElementChild) ? body.classList.add("has-content") : body.classList.remove
+    main.contains(section.firstElementChild) ? body.classList.add("has-content") : body.classList.remove("has-content")
   }
 
   const detailsIsUndefined = data.title === undefined && data.overview === undefined && !data.success
@@ -41,8 +39,6 @@ function contentMovie(data) {
   } else {
     statusPhotoMovie = `${IMG_URL}/${statusPhotoMovie}`
   }
-
-  console.log(statusPhotoMovie)
 
   section.innerHTML = `<figure>
   <img src=${statusPhotoMovie}>
