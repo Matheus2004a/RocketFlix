@@ -67,10 +67,6 @@ main {
     height: 100%;
 }
 
-.section-movie figure img.movie-not-found {
-    filter: opacity(1) contrast(.5);
-}
-
 .section-movie figure figcaption {
     display: grid;
     gap: 1rem;

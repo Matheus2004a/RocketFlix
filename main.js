@@ -33,9 +33,7 @@ function contentMovie(data) {
   let statusPhotoMovie = data.poster_path
 
   if (statusPhotoMovie == null || statusPhotoMovie == undefined) {
-    statusPhotoMovie = `https://img.icons8.com/ios/500/no-image.png`
-    const img = document.querySelector(".section-movie img")
-    img.classList.add("movie-not-found")
+    statusPhotoMovie = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfUowadXV1ZKEA2jolBp8iR06x148FkNTfhHq_xkC1a2NiU8-JqGaa7qESUGhz5wjzSR0&usqp=CAU`
   } else {
     statusPhotoMovie = `${IMG_URL}/${statusPhotoMovie}`
   }
