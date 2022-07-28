@@ -19,7 +19,7 @@ body {
     height: 100vh;
 }
 
-body.has-content{
+body.has-content {
     height: 100%;
 }
 
@@ -44,14 +44,15 @@ main {
 }
 
 .section-search {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 2rem;
 }
 
 .section-movie {
-    width: 60vw;
+    width: 70vw;
 }
 
 .section-movie figure {
@@ -90,6 +91,11 @@ button {
 
 .search-movie:active {
     opacity: .4;
+}
+
+.search-movie figure,
+.section-search figure {
+    margin: 0;
 }
 
 .search-movie figure img {
