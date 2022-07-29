@@ -1,4 +1,4 @@
-import { API_KEY, IMG_URL, language } from './api.js'
+import { API_KEY, IMG_URL, language } from './service/api.js'
 
 const body = document.querySelector("body")
 const buttonSearchMovie = document.querySelector(".search-movie")
@@ -27,8 +27,6 @@ function checkErrorsMovie(data) {
 }
 
 function contentMovie(data) {
-  console.log(data)
-
   let statusPhotoMovie = data.poster_path
 
   if (statusPhotoMovie == null || statusPhotoMovie == undefined) {
